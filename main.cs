@@ -32,6 +32,9 @@ namespace Quanlisinhvien
             if (username == "0019268@st.huce.edu.vn" && password == "0019268")
             {
                 MessageBox.Show("Login success");
+                QuanliHome_Page quanli = new QuanliHome_Page();
+                quanli.Show();
+                this.Hide();
             }
             else
             {
@@ -48,5 +51,6 @@ namespace Quanlisinhvien
         {
 
         }
+
     }
 }
