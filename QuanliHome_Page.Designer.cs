@@ -28,11 +28,6 @@
             this.menuQlsignVien = new System.Windows.Forms.ToolStripMenuItem();
             this.menuQllopHoc = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDangXuat = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFirst = new System.Windows.Forms.Button();
-            this.btnPrev = new System.Windows.Forms.Button();
-            this.lblTrang = new System.Windows.Forms.Label();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnLast = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -48,7 +43,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(1371, 28);
+            this.menuStrip.Size = new System.Drawing.Size(1234, 28);
             this.menuStrip.TabIndex = 24;
             // 
             // menuQlsignVien
@@ -73,74 +68,21 @@
             this.menuDangXuat.Size = new System.Drawing.Size(91, 24);
             this.menuDangXuat.Text = "Đăng xuất";
             // 
-            // btnFirst
-            // 
-            this.btnFirst.BackColor = System.Drawing.Color.White;
-            this.btnFirst.Location = new System.Drawing.Point(411, 645);
-            this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(57, 43);
-            this.btnFirst.TabIndex = 4;
-            this.btnFirst.Text = "<<";
-            this.btnFirst.UseVisualStyleBackColor = false;
-            // 
-            // btnPrev
-            // 
-            this.btnPrev.BackColor = System.Drawing.Color.White;
-            this.btnPrev.Location = new System.Drawing.Point(469, 645);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(57, 43);
-            this.btnPrev.TabIndex = 3;
-            this.btnPrev.Text = "<";
-            this.btnPrev.UseVisualStyleBackColor = false;
-            // 
-            // lblTrang
-            // 
-            this.lblTrang.AutoSize = true;
-            this.lblTrang.Location = new System.Drawing.Point(800, 659);
-            this.lblTrang.Name = "lblTrang";
-            this.lblTrang.Size = new System.Drawing.Size(133, 16);
-            this.lblTrang.TabIndex = 2;
-            this.lblTrang.Text = "Trang 1/1  |  3 bản ghi";
-            // 
-            // btnNext
-            // 
-            this.btnNext.BackColor = System.Drawing.Color.White;
-            this.btnNext.Location = new System.Drawing.Point(1223, 645);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(57, 43);
-            this.btnNext.TabIndex = 1;
-            this.btnNext.Text = ">";
-            this.btnNext.UseVisualStyleBackColor = false;
-            // 
-            // btnLast
-            // 
-            this.btnLast.BackColor = System.Drawing.Color.White;
-            this.btnLast.Location = new System.Drawing.Point(1280, 645);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(57, 43);
-            this.btnLast.TabIndex = 0;
-            this.btnLast.Text = ">>";
-            this.btnLast.UseVisualStyleBackColor = false;
-            // 
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(0, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1017, 569);
+            this.panel1.Size = new System.Drawing.Size(1234, 633);
             this.panel1.TabIndex = 25;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // QuanliHome_Page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1371, 725);
+            this.ClientSize = new System.Drawing.Size(1234, 662);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnLast);
-            this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.lblTrang);
-            this.Controls.Add(this.btnPrev);
-            this.Controls.Add(this.btnFirst);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "QuanliHome_Page";
@@ -157,11 +99,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuQlsignVien;
         private System.Windows.Forms.ToolStripMenuItem menuQllopHoc;
         private System.Windows.Forms.ToolStripMenuItem menuDangXuat;
-        private System.Windows.Forms.Button btnFirst;
-        private System.Windows.Forms.Button btnPrev;
-        private System.Windows.Forms.Label lblTrang;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button btnLast;
 
         #endregion
 

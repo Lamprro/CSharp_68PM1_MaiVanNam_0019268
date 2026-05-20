@@ -16,5 +16,10 @@ namespace Quanlisinhvien
         {
             InitializeComponent();
         }
+
+        private void labelTitleLeft_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

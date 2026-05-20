@@ -39,5 +39,10 @@ namespace Quanlisinhvien
             panel1.Controls.Clear();
             panel1.Controls.Add(page);
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

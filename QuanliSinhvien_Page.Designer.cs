@@ -52,6 +52,11 @@
             this.lblHoTen = new System.Windows.Forms.Label();
             this.txtMaSV = new System.Windows.Forms.TextBox();
             this.lblMaSV = new System.Windows.Forms.Label();
+            this.btnLast = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.lblTrang = new System.Windows.Forms.Label();
+            this.btnPrev = new System.Windows.Forms.Button();
+            this.btnFirst = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).BeginInit();
             this.grpThongTin.SuspendLayout();
             this.SuspendLayout();
@@ -319,17 +324,71 @@
             this.lblMaSV.TabIndex = 22;
             this.lblMaSV.Text = "Mã sinh viên:";
             // 
+            // btnLast
+            // 
+            this.btnLast.BackColor = System.Drawing.Color.White;
+            this.btnLast.Location = new System.Drawing.Point(1271, 638);
+            this.btnLast.Name = "btnLast";
+            this.btnLast.Size = new System.Drawing.Size(57, 43);
+            this.btnLast.TabIndex = 29;
+            this.btnLast.Text = ">>";
+            this.btnLast.UseVisualStyleBackColor = false;
+            // 
+            // btnNext
+            // 
+            this.btnNext.BackColor = System.Drawing.Color.White;
+            this.btnNext.Location = new System.Drawing.Point(1214, 638);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(57, 43);
+            this.btnNext.TabIndex = 30;
+            this.btnNext.Text = ">";
+            this.btnNext.UseVisualStyleBackColor = false;
+            // 
+            // lblTrang
+            // 
+            this.lblTrang.AutoSize = true;
+            this.lblTrang.Location = new System.Drawing.Point(791, 652);
+            this.lblTrang.Name = "lblTrang";
+            this.lblTrang.Size = new System.Drawing.Size(133, 16);
+            this.lblTrang.TabIndex = 31;
+            this.lblTrang.Text = "Trang 1/1  |  3 bản ghi";
+            // 
+            // btnPrev
+            // 
+            this.btnPrev.BackColor = System.Drawing.Color.White;
+            this.btnPrev.Location = new System.Drawing.Point(460, 638);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(57, 43);
+            this.btnPrev.TabIndex = 32;
+            this.btnPrev.Text = "<";
+            this.btnPrev.UseVisualStyleBackColor = false;
+            // 
+            // btnFirst
+            // 
+            this.btnFirst.BackColor = System.Drawing.Color.White;
+            this.btnFirst.Location = new System.Drawing.Point(402, 638);
+            this.btnFirst.Name = "btnFirst";
+            this.btnFirst.Size = new System.Drawing.Size(57, 43);
+            this.btnFirst.TabIndex = 33;
+            this.btnFirst.Text = "<<";
+            this.btnFirst.UseVisualStyleBackColor = false;
+            // 
             // QuanliSinhVien_Page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnLast);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.lblTrang);
+            this.Controls.Add(this.btnPrev);
+            this.Controls.Add(this.btnFirst);
             this.Controls.Add(this.dgvSinhVien);
             this.Controls.Add(this.btnTim);
             this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.lblTimKiem);
             this.Controls.Add(this.grpThongTin);
             this.Name = "QuanliSinhVien_Page";
-            this.Size = new System.Drawing.Size(1335, 619);
+            this.Size = new System.Drawing.Size(1335, 733);
             this.Load += new System.EventHandler(this.QuanliSinhVien_Page_Load);
             this.QueryAccessibilityHelp += new System.Windows.Forms.QueryAccessibilityHelpEventHandler(this.QuanliSinhVien_Page_QueryAccessibilityHelp);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).EndInit();
@@ -366,5 +425,10 @@
         private System.Windows.Forms.Label lblHoTen;
         private System.Windows.Forms.TextBox txtMaSV;
         private System.Windows.Forms.Label lblMaSV;
+        private System.Windows.Forms.Button btnLast;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Label lblTrang;
+        private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.Button btnFirst;
     }
 }
