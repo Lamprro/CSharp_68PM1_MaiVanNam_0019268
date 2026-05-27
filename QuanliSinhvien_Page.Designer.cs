@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvSinhVien = new System.Windows.Forms.DataGridView();
-            this.colMaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnTim = new System.Windows.Forms.Button();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.lblTimKiem = new System.Windows.Forms.Label();
@@ -66,53 +61,13 @@
             this.dgvSinhVien.AllowUserToAddRows = false;
             this.dgvSinhVien.BackgroundColor = System.Drawing.Color.White;
             this.dgvSinhVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSinhVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colMaSV,
-            this.colHoTen,
-            this.colGioiTinh,
-            this.colNgaySinh,
-            this.colLop});
             this.dgvSinhVien.Location = new System.Drawing.Point(401, 100);
             this.dgvSinhVien.Name = "dgvSinhVien";
             this.dgvSinhVien.RowHeadersVisible = false;
             this.dgvSinhVien.RowHeadersWidth = 51;
             this.dgvSinhVien.Size = new System.Drawing.Size(926, 512);
             this.dgvSinhVien.TabIndex = 24;
-            // 
-            // colMaSV
-            // 
-            this.colMaSV.HeaderText = "Mã SV";
-            this.colMaSV.MinimumWidth = 6;
-            this.colMaSV.Name = "colMaSV";
-            this.colMaSV.Width = 60;
-            // 
-            // colHoTen
-            // 
-            this.colHoTen.HeaderText = "Họ và Tên";
-            this.colHoTen.MinimumWidth = 6;
-            this.colHoTen.Name = "colHoTen";
-            this.colHoTen.Width = 180;
-            // 
-            // colGioiTinh
-            // 
-            this.colGioiTinh.HeaderText = "Giới Tính";
-            this.colGioiTinh.MinimumWidth = 6;
-            this.colGioiTinh.Name = "colGioiTinh";
-            this.colGioiTinh.Width = 80;
-            // 
-            // colNgaySinh
-            // 
-            this.colNgaySinh.HeaderText = "Ngày Sinh";
-            this.colNgaySinh.MinimumWidth = 6;
-            this.colNgaySinh.Name = "colNgaySinh";
-            this.colNgaySinh.Width = 120;
-            // 
-            // colLop
-            // 
-            this.colLop.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colLop.HeaderText = "Lớp";
-            this.colLop.MinimumWidth = 6;
-            this.colLop.Name = "colLop";
+            this.dgvSinhVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSinhVien_CellContentClick);
             // 
             // btnTim
             // 
@@ -223,6 +178,7 @@
             this.btnThem.TabIndex = 12;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // cbLop
             // 
@@ -235,6 +191,7 @@
             this.cbLop.Name = "cbLop";
             this.cbLop.Size = new System.Drawing.Size(325, 28);
             this.cbLop.TabIndex = 13;
+            this.cbLop.SelectedIndexChanged += new System.EventHandler(this.cbLop_SelectedIndexChanged);
             // 
             // lblLop
             // 
@@ -402,11 +359,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvSinhVien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMaSV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colGioiTinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNgaySinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLop;
         private System.Windows.Forms.Button btnTim;
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Label lblTimKiem;

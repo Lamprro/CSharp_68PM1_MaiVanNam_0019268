@@ -12,6 +12,7 @@ namespace Quanlisinhvien
 {
     public partial class QuanliLopHoc_Page : UserControl
     {
+        DataClasses1DataContext db = new DataClasses1DataContext();
         public QuanliLopHoc_Page()
         {
             InitializeComponent();
@@ -20,6 +21,17 @@ namespace Quanlisinhvien
         private void labelTitleLeft_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvLopHoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void QuanliLopHoc_Page_Load(object sender, EventArgs e)
+        {
+            List<lophoc> dslh = db.lophocs.ToList();
+            dgvLopHoc.DataSource = dslh;
         }
     }
 }
