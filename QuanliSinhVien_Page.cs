@@ -168,6 +168,102 @@ namespace Quanlisinhvien
             }
         }
 
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string masv = txtMaSV.Text.Trim();
+                if (string.IsNullOrEmpty(masv))
+                {
+                    MessageBox.Show("Vui lòng chọn sinh viên cần sửa từ danh sách!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtHoTen.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập Họ tên sinh viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (cbLop.SelectedValue == null)
+                {
+                    MessageBox.Show("Vui lòng chọn lớp học!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                sinhvien sv = db.sinhviens.SingleOrDefault(s => s.masv == masv);
+                if (sv != null)
+                {
+                    sv.hoten = txtHoTen.Text.Trim();
+                    sv.gioitinh = cbGioiTinh.Text;
+                    sv.ngaysinh = dtpNgaySinh.Value;
+                    sv.lophoc_id = (int)cbLop.SelectedValue;
+
+                    db.SubmitChanges();
+                    MessageBox.Show("Cập nhật thông tin sinh viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy sinh viên có mã: " + masv, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi sửa: " + ex.Message, "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string masv = txtMaSV.Text.Trim();
+                if (string.IsNullOrEmpty(masv))
+                {
+                    MessageBox.Show("Vui lòng chọn sinh viên cần xóa từ danh sách!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DialogResult result = MessageBox.Show($"Bạn có chắc chắn muốn xóa sinh viên có mã {masv}?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    sinhvien sv = db.sinhviens.SingleOrDefault(s => s.masv == masv);
+                    if (sv != null)
+                    {
+                        db.sinhviens.DeleteOnSubmit(sv);
+                        db.SubmitChanges();
+                        MessageBox.Show("Xóa sinh viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        btnLamMoi_Click(sender, e);
+                        LoadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy sinh viên có mã: " + masv, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi xóa: " + ex.Message, "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            txtMaSV.Clear();
+            txtHoTen.Clear();
+            cbGioiTinh.SelectedIndex = 0;
+            dtpNgaySinh.Value = DateTime.Now;
+            if (cbLop.Items.Count > 0) cbLop.SelectedIndex = 0;
+            else cbLop.SelectedIndex = -1;
+
+            txtMaSV.Enabled = true;
+        }
+
+
         private void cbLop_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
