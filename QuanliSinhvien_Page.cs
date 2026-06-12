@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace Quanlisinhvien
         public QuanliSinhVien_Page()
         {
             InitializeComponent();
+            dgvSinhVien.CellClick += dgvSinhVien_CellClick;
         }
 
         private void quanLiSinhVienToolStripMenuItem_Click(object sender, EventArgs e)
@@ -30,24 +32,84 @@ namespace Quanlisinhvien
 
         private void QuanliSinhVien_Page_Load(object sender, EventArgs e)
         {
-            var dssv = db.sinhviens.Select(sv => new {
-                sv.masv,
-                sv.hoten,
-                sv.gioitinh,
-                sv.ngaysinh,
-                sv.lophoc_id
-            }).ToList();
-            dgvSinhVien.DataSource = dssv;
-
-            var dsLop = db.lophocs.ToList().Select(lh => new
+            try
             {
-                id = lh.id,
-                Display = $"{lh.malop} - {lh.tenlop}"
-            }).ToList();
+                var dsLop = db.lophocs.ToList().Select(lh => new
+                {
+                    id = lh.id,
+                    Display = $"{lh.malop} - {lh.tenlop}"
+                }).ToList();
+                cbLop.DataSource = dsLop;
+                cbLop.DisplayMember = "Display";
+                cbLop.ValueMember = "id";
+                cbGioiTinh.SelectedIndex = 0;
 
-            cbLop.DataSource = dsLop;
-            cbLop.DisplayMember = "Display";
-            cbLop.ValueMember = "id";
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khởi tạo trang: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadData()
+        {
+            try
+            {
+                string searchKeyword = txtTimKiem.Text.Trim().ToLower();
+                var query = db.sinhviens.AsQueryable();
+
+                if (!string.IsNullOrEmpty(searchKeyword))
+                {
+                    query = query.Where(sv =>
+                        sv.masv.ToLower().Contains(searchKeyword) ||
+                        sv.hoten.ToLower().Contains(searchKeyword) ||
+                        sv.lophoc.tenlop.ToLower().Contains(searchKeyword) ||
+                        sv.lophoc.malop.ToLower().Contains(searchKeyword)
+                    );
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi khi tải dữ liệu sinh viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvSinhVien_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvSinhVien.Rows[e.RowIndex];
+                txtMaSV.Text = row.Cells["masv"].Value?.ToString();
+                txtHoTen.Text = row.Cells["hoten"].Value?.ToString();
+
+                string gioiTinh = row.Cells["gioitinh"].Value?.ToString();
+                if (gioiTinh == "Nam") cbGioiTinh.SelectedIndex = 0;
+                else if (gioiTinh == "Nữ") cbGioiTinh.SelectedIndex = 1;
+                else cbGioiTinh.SelectedIndex = -1;
+
+                if (row.Cells["ngaysinh"].Value != null && row.Cells["ngaysinh"].Value != DBNull.Value)
+                {
+                    dtpNgaySinh.Value = Convert.ToDateTime(row.Cells["ngaysinh"].Value);
+                }
+                else
+                {
+                    dtpNgaySinh.Value = DateTime.Now;
+                }
+
+                if (row.Cells["lophoc_id"].Value != null && row.Cells["lophoc_id"].Value != DBNull.Value)
+                {
+                    cbLop.SelectedValue = Convert.ToInt32(row.Cells["lophoc_id"].Value);
+                }
+                else
+                {
+                    cbLop.SelectedIndex = -1;
+                }
+
+                txtMaSV.Enabled = true;
+            }
         }
 
         private void dgvSinhVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
